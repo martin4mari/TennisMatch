@@ -24,12 +24,12 @@ public class Main {
          System.out.println("Tournaments name:");
                  tg.setTournament(sc.next());
 
-         System.out.println("Welcome  "+tg.getTournament()+" Tournament");
+         System.out.println("***     Welcome to "+tg.getTournament()+" Tournament    ***");
         
-    tg.point(p1, p2);       
+    tg.game(p1, p2);       
         
-        System.out.println(p1);
-        System.out.println(p2);
+   //     System.out.println(p1);
+      //  System.out.println(p2);
         
     }
 }
