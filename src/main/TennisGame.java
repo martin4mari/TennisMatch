@@ -11,6 +11,8 @@ public class TennisGame {
 
     private static final Map<Integer, String> SCORE_MAP = new HashMap<>();
 
+    
+    // defino las constantes, cada punto corresponde a un numero especifico
     static {
         SCORE_MAP.put(0, "Love");
         SCORE_MAP.put(1, "15");
@@ -41,14 +43,17 @@ public class TennisGame {
         this.player = player;
     }
 
+    
+    //punto por punto, cada jugador gana aleatoriamente
     public Player point(Player p, Player p2) {
 
         int c = 0;
         int c2 = 0;
 
         while (Math.max(p.getScore(), p2.getScore()) < 3) {
-
-            int random = (int) Math.round(Math.random() * 100);
+ 
+ 
+            int random = (int) Math.round(Math.random() * 100);  //cada jugador tiene el 50% de probabilidades de ganar
 
             if (random < 50) {
                 p.setScore(p.getScore() + 1);
@@ -67,12 +72,15 @@ public class TennisGame {
         }
         System.out.println("Game: " + SCORE_MAP.get(p.getScore()) + "-" + SCORE_MAP.get(p2.getScore()) + "\n");
 
+        //reinicio el score de cada jugador para el comienzo de cada juego
         p.setScore(0);
         p2.setScore(0);
 
         return c > c2 ? p : p2;
     }
 
+    
+    //cuento cantidad de juegos ganados para saber quien gana el set
     public Player winSets(Player p, Player p2) {
 
         int c = 0;
@@ -87,7 +95,8 @@ public class TennisGame {
             } else if (win == p2) {
                 c2++;
             }
-        } while (Math.max(c, c2) < 6 || Math.abs(c - c2) <= 2 || c == c2);
+        } while (Math.max(c, c2) < 6 || Math.abs(c - c2) <= 2 || c == c2);  //bucle funciona mientras el punto maximo de cualquier jugador permanezca menor a 6,
+                                                                                                           //mientras  la diferencia entre ellos sea menor a dos, y si empatan
 
         if (c > c2) {
             System.out.println(p.getName() + " won the set---");
@@ -110,8 +119,7 @@ public class TennisGame {
             } else if (win == p2) {
                 c2++;
             }
-
-        } while (Math.max(c, c2) < numSets || Math.abs(c - c2) <= 2 || c == c2);
+        } while (Math.max(c, c2) < numSets || Math.abs(c - c2) <= 2 || c == c2); //utilizo el numero de sets elegido saber que jugador gana
 
         return c > c2 ? p : p2;
     }

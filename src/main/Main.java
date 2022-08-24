@@ -17,9 +17,7 @@ public class Main {
         tg.setTournament(sc.next());
         System.out.println("***     Welcome to " + tg.getTournament() + " Tournament    ***");
 
-        System.out.println("Please enter number of sets. Enter 3 (2/3) or 5 (3/5)");
-        int n = sc.nextInt();
-
+        
         Player p = new Player();
         Player p2 = new Player();
 
@@ -28,12 +26,12 @@ public class Main {
         System.out.println("Player two name:");
         p2.setName(sc.next());
 
+        System.out.println("Please enter number of sets. Enter 2 (2/3) or 3 (3/5)");
+        int n = sc.nextInt();
+        
         String ans = null;
-
         do {
-
             Player winner = tg.winnerPlayer(p, p2, n);
-            
             System.out.println(winner.getName() +" won the tournament!");
 
             System.out.println("Do you want to play again? Y / N");
