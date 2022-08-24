@@ -7,29 +7,42 @@ import java.util.Scanner;
  * @author Maria
  */
 public class Main {
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in).useDelimiter("\n");
-        
-        Player p1 = new Player();
+
+        TennisGame tg = new TennisGame();
+
+        System.out.println("Tournaments name:");
+        tg.setTournament(sc.next());
+        System.out.println("***     Welcome to " + tg.getTournament() + " Tournament    ***");
+
+        System.out.println("Please enter number of sets. Enter 3 (2/3) or 5 (3/5)");
+        int n = sc.nextInt();
+
+        Player p = new Player();
         Player p2 = new Player();
-        
+
         System.out.println("Player one name:");
-        p1.setName(sc.next());
+        p.setName(sc.next());
         System.out.println("Player two name:");
         p2.setName(sc.next());
-        
-        TennisGame tg = new TennisGame();
-        
-         System.out.println("Tournaments name:");
-                 tg.setTournament(sc.next());
 
-         System.out.println("***     Welcome to "+tg.getTournament()+" Tournament    ***");
-        
-    tg.game(p1, p2);       
-        
-   //     System.out.println(p1);
-      //  System.out.println(p2);
-        
+        String ans = null;
+
+        do {
+
+            Player winner = tg.winnerPlayer(p, p2, n);
+            
+            System.out.println(winner.getName() +" won the tournament!");
+
+            System.out.println("Do you want to play again? Y / N");
+            ans = sc.next().toUpperCase();
+            if (ans.equals("N")) {
+                break;
+            }
+        } while (ans.equals("Y"));
+
+        System.out.println("Goodbye!!");
     }
 }
